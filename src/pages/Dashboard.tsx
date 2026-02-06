@@ -55,45 +55,56 @@ const Dashboard: React.FC = () => {
     ]
 
     return (
-        <div className="space-y-6">
-            {/* Stats Cards Section */}
-            <div className="grid grid-cols-6 gap-4">
-                {statsData.map((stat, index) => (
-                    <StatsCard
-                        key={index}
-                        value={stat.value}
-                        label={stat.label}
-                        icon={stat.icon}
-                        isHighlighted={stat.isHighlighted}
-                    />
-                ))}
-            </div>
-
-            {/* Project Timeline Section */}
-            <ProjectTimeline
-                title="Project Timeline"
-                year="2026"
-                items={timelineData}
-            />
-
-            {/* Progress Status Section */}
-            <ProgressStatus />
-
-            {/* Bottom Section - 3 Cards */}
-            <div className="grid grid-cols-3 gap-6">
-                <ComplianceScore score={65} />
-                <TopPerformers performers={performersData} />
-                <RecentActivities activities={activitiesData} />
-            </div>
-
-            {/* Last Section - 2 Cards */}
-            <div className="flex gap-6">
-                <div className="flex-1">
-                    <MonthlyPerformance data={monthlyData} />
+        <main className="p-6 flex-1" style={{
+            overflowY: 'auto',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+        }}>
+            <div className="space-y-6">
+                {/* Stats Cards Section */}
+                <div className="grid grid-cols-6 gap-4">
+                    {statsData.map((stat, index) => (
+                        <StatsCard
+                            key={index}
+                            value={stat.value}
+                            label={stat.label}
+                            icon={stat.icon}
+                            isHighlighted={stat.isHighlighted}
+                        />
+                    ))}
                 </div>
-                <AuditReadiness score={80} overdue={12} missing={5} />
+
+                {/* Project Timeline Section */}
+                <ProjectTimeline
+                    title="Project Timeline"
+                    year="2026"
+                    items={timelineData}
+                />
+
+                {/* Progress Status Section */}
+                <ProgressStatus />
+
+                {/* Bottom Section - 3 Cards */}
+                <div className="grid grid-cols-3 gap-6">
+                    <ComplianceScore score={65} />
+                    <TopPerformers performers={performersData} />
+                    <RecentActivities activities={activitiesData} />
+                </div>
+
+                {/* Last Section - 2 Cards */}
+                <div className="flex gap-6">
+                    <div className="flex-1">
+                        <MonthlyPerformance data={monthlyData} />
+                    </div>
+                    <AuditReadiness score={80} overdue={12} missing={5} />
+                </div>
             </div>
-        </div>
+            <style>{`
+                main::-webkit-scrollbar {
+                    display: none;
+                }
+            `}</style>
+        </main>
     )
 }
 

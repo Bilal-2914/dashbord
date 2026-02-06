@@ -7,7 +7,7 @@ interface AuditReadinessProps {
 }
 
 const AuditReadiness: React.FC<AuditReadinessProps> = ({ score, overdue, missing }) => {
-    // Calculate clip path based on score percentage
+
     const clipPercentage = score
 
     return (
