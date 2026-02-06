@@ -1,4 +1,5 @@
 import React from 'react'
+import CategoryStatusGrid from './CategoryStatusGrid'
 
 interface CategoryCardProps {
     title: string
@@ -19,6 +20,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ title, percentage }) => {
 }
 
 const ProgressStatus: React.FC = () => {
+
     const statusItems = [
         { label: 'Not Started', color: '#9CA3AF' },
         { label: 'In Progress', color: '#F59E0B' },
@@ -76,8 +78,7 @@ const ProgressStatus: React.FC = () => {
                 </div>
             </div>
 
-
-            {/* <CategoryStatusGrid /> */}
+            <CategoryStatusGrid />
 
         </div>
     )

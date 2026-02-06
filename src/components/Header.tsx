@@ -23,7 +23,7 @@ const Header = ({ isCollapsed }: { isCollapsed: boolean }) => {
                     </button>
 
                     {/* Profile Section */}
-                    <div className="flex items-center gap-2 md:gap-3 cursor-pointer bg-gray-100  px-3 py-1 rounded-full transition-colors">
+                    <div className="flex items-center gap-2 md:gap-3 cursor-pointer bg-gray-100 px-2 md:px-3 py-1 rounded-full transition-colors">
                         <img
                             src="/profile.png"
                             alt="Profile"
@@ -35,7 +35,7 @@ const Header = ({ isCollapsed }: { isCollapsed: boolean }) => {
                         <img
                             src="/arrow-down.png"
                             alt="Dropdown"
-                            className="hidden md:block w-3 h-3 md:w-4 md:h-4"
+                            className="w-3 h-3 md:w-4 md:h-4"
                         />
                     </div>
                 </div>

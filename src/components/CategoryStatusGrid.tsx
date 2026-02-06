@@ -239,48 +239,50 @@ const CategoryStatusGrid: React.FC = () => {
     ]
 
     return (
-        <div className="bg-white rounded-lg mt-4 p-6" style={{ borderColor: '#E0E8ED' }}>
-            <div className="grid grid-cols-10 auto-rows-fr gap-4" style={{ gridAutoRows: 'minmax(140px, auto)' }}>
-                {gridItems.map((item, index) => {
-                    if (!item) return null
+        <div className="bg-white rounded-lg  p-6" style={{ borderColor: '#E0E8ED' }}>
+            <div className="overflow-x-auto scrollbar-hide">
+                <div className="grid grid-cols-10 auto-rows-fr gap-4 min-w-[1200px]" style={{ gridAutoRows: 'minmax(140px, auto)' }}>
+                    {gridItems.map((item, index) => {
+                        if (!item) return null
 
-                    return (
-                        <div
-                            key={index}
-                            className="flex flex-col p-4 rounded-lg"
-                            style={{
-                                backgroundColor: '#F5F8FB',
-                                gridRow: item.rowSpan ? `span ${item.rowSpan}` : 'span 1',
-                                gridColumn: item.colSpan ? `span ${item.colSpan}` : 'span 1'
-                            }}
-                        >
-                            {/* Title */}
-                            <div className="text-xs font-medium text-gray-700 text-center mb-3 leading-tight">
-                                {item.title}
-                            </div>
-
-                            {/* Subtitle if exists */}
-                            {item.subtitle && (
-                                <div className="text-xs text-gray-500 text-center mb-2">
-                                    {item.subtitle}
+                        return (
+                            <div
+                                key={index}
+                                className="flex flex-col p-4 rounded-lg"
+                                style={{
+                                    backgroundColor: '#F5F8FB',
+                                    gridRow: item.rowSpan ? `span ${item.rowSpan}` : 'span 1',
+                                    gridColumn: item.colSpan ? `span ${item.colSpan}` : 'span 1'
+                                }}
+                            >
+                                {/* Title */}
+                                <div className="text-xs font-medium text-gray-700 text-center mb-3 leading-tight">
+                                    {item.title}
                                 </div>
-                            )}
 
-                            {/* Status Indicators */}
-                            <div className="flex flex-wrap gap-2 justify-center mt-auto">
-                                {item.indicators.map((indicator, idx) => (
-                                    <div
-                                        key={idx}
-                                        className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-semibold"
-                                        style={{ backgroundColor: getStatusColor(indicator.status) }}
-                                    >
-                                        {indicator.number}
+                                {/* Subtitle if exists */}
+                                {item.subtitle && (
+                                    <div className="text-xs text-gray-500 text-center mb-2">
+                                        {item.subtitle}
                                     </div>
-                                ))}
+                                )}
+
+                                {/* Status Indicators */}
+                                <div className="flex flex-wrap gap-2 justify-center mt-auto">
+                                    {item.indicators.map((indicator, idx) => (
+                                        <div
+                                            key={idx}
+                                            className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-semibold"
+                                            style={{ backgroundColor: getStatusColor(indicator.status) }}
+                                        >
+                                            {indicator.number}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )
