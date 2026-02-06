@@ -7,7 +7,7 @@ interface StatsCardProps {
     isHighlighted?: boolean
 }
 
-const StatsCard: React.FC<StatsCardProps> = ({ value, label, icon, isHighlighted = false }) => {
+const StatsCard: React.FC<StatsCardProps> = ({ value, label, icon }) => {
     return (
         <div
             className={`flex flex-col p-4 bg-white rounded-lg border border-[#E0E8ED]`}
