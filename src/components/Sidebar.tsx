@@ -7,9 +7,9 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
     return (
         <div
-            className="bg-[#1e3a5f] h-screen text-white fixed left-0 top-0 z-40 transition-all duration-300 ease-in-out"
+            className={`bg-[#1e3a5f] h-screen text-white fixed left-0 top-0 z-40 transition-all duration-300 ease-in-out ${isCollapsed ? 'w-0 md:w-[80px]' : 'w-64'
+                }`}
             style={{
-                width: isCollapsed ? '80px' : '256px',
                 height: '100vh',
                 overflow: 'hidden'
             }}

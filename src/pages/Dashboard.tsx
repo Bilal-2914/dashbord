@@ -5,6 +5,8 @@ import ProgressStatus from '../components/ProgressStatus'
 import ComplianceScore from '../components/ComplianceScore'
 import TopPerformers from '../components/TopPerformers'
 import RecentActivities from '../components/RecentActivities'
+import MonthlyPerformance from '../components/MonthlyPerformance'
+import AuditReadiness from '../components/AuditReadiness'
 
 const Dashboard: React.FC = () => {
     const timelineData = [
@@ -35,6 +37,21 @@ const Dashboard: React.FC = () => {
         { title: 'Document "Strategy_Review.Pdf"', description: 'Was Uploaded By Ahmed Khaled', time: '5 Mins Ago' },
         { title: 'Task "Review Compliance Files"', description: 'Was Assigned To Mona Hamed', time: '30 Mins Ago' },
         { title: 'New Criterion "5.3 Digital Identity"', description: 'Was Created By Admin', time: '1 Hour Ago' }
+    ]
+
+    const monthlyData = [
+        { month: 'Jan', value: 85 },
+        { month: 'Feb', value: 75 },
+        { month: 'Mar', value: 80 },
+        { month: 'Apr', value: 42 },
+        { month: 'May', value: 88 },
+        { month: 'Jun', value: 78 },
+        { month: 'Jul', value: 55 },
+        { month: 'Aug', value: 87 },
+        { month: 'Sept', value: 77 },
+        { month: 'Oct', value: 58 },
+        { month: 'Nov', value: 90 },
+        { month: 'Dec', value: 78 }
     ]
 
 
@@ -77,13 +94,15 @@ const Dashboard: React.FC = () => {
                     <RecentActivities activities={activitiesData} />
                 </div>
 
-                {/* Last Section - 2 Cards */}
-                {/* <div className="flex gap-6">
+                {/* Last Section - 2 Cards with Responsive Grid */}
+                <div className="flex flex-col lg:flex-row gap-6">
                     <div className="flex-1">
                         <MonthlyPerformance data={monthlyData} />
                     </div>
-                    <AuditReadiness score={80} overdue={12} missing={5} />
-                </div> */}
+                    <div className="w-full lg:w-auto">
+                        <AuditReadiness score={80} overdue={12} missing={5} />
+                    </div>
+                </div>
             </div>
             <style>{`
                 main::-webkit-scrollbar {

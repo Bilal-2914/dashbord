@@ -3,16 +3,16 @@ import SearchBar from './SearchBar'
 const Header = ({ isCollapsed }: { isCollapsed: boolean }) => {
     return (
         <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-            <div className="flex items-center justify-between px-4 md:px-6 lg:px-8 py-3 md:py-4">
+            <div className="flex items-center justify-between px-[15px] md:px-6 lg:px-8 py-3 md:py-4">
                 {/* Left Section - Search Bar */}
-                <div className="flex-1 max-w-md">
+                <div className="flex-1 max-w-md ml-14 md:ml-10">
                     <SearchBar />
                 </div>
 
                 {/* Right Section - Notification & Profile */}
                 <div className={`flex items-center gap-3 md:gap-4 ${isCollapsed ? 'ml-6 md:ml-12' : 'ml-4'}`}>
                     {/* Notification Bell */}
-                    <button className="relative p-2 hover:bg-gray-50 rounded-lg transition-colors">
+                    <button className="hidden md:flex relative p-2 hover:bg-gray-50 rounded-lg transition-colors">
                         <img
                             src="/bell.png"
                             alt="Notifications"
@@ -29,13 +29,13 @@ const Header = ({ isCollapsed }: { isCollapsed: boolean }) => {
                             alt="Profile"
                             className="w-8 h-8 md:w-9 md:h-9 rounded-full object-cover"
                         />
-                        <span className="hidden sm:block text-sm md:text-base font-medium text-gray-700">
+                        <span className="hidden md:block text-sm md:text-base font-medium text-gray-700">
                             Mohamed
                         </span>
                         <img
                             src="/arrow-down.png"
                             alt="Dropdown"
-                            className="hidden sm:block w-3 h-3 md:w-4 md:h-4"
+                            className="hidden md:block w-3 h-3 md:w-4 md:h-4"
                         />
                     </div>
                 </div>

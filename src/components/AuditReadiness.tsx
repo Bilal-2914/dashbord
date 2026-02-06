@@ -11,7 +11,7 @@ const AuditReadiness: React.FC<AuditReadinessProps> = ({ score, overdue, missing
     const clipPercentage = score
 
     return (
-        <div className="bg-white rounded-lg border p-6" style={{ borderColor: '#E0E8ED', width: '368px', height: '330px' }}>
+        <div className="bg-white rounded-lg border p-6 w-full lg:w-[368px]" style={{ borderColor: '#E0E8ED', height: '330px' }}>
             <h3 className="text-lg font-semibold text-[#1E3A5F] mb-4">Audit Readiness</h3>
 
             <div className="flex flex-col items-center">
