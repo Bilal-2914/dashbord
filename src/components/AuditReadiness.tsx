@@ -1,0 +1,84 @@
+import React from 'react'
+
+interface AuditReadinessProps {
+    score: number
+    overdue: number
+    missing: number
+}
+
+const AuditReadiness: React.FC<AuditReadinessProps> = ({ score, overdue, missing }) => {
+    // Calculate clip path based on score percentage
+    const clipPercentage = score
+
+    return (
+        <div className="bg-white rounded-lg border p-6" style={{ borderColor: '#E0E8ED', width: '368px', height: '330px' }}>
+            <h3 className="text-lg font-semibold text-[#1E3A5F] mb-4">Audit Readiness</h3>
+
+            <div className="flex flex-col items-center">
+                {/* Arc with score-based clipping */}
+                <div className="relative mb-6">
+                    <svg width="240" height="120" viewBox="0 0 258 130" style={{ overflow: 'visible' }}>
+                        <defs>
+                            <clipPath id="scoreClip">
+                                <rect x="0" y="0" width={`${clipPercentage}%`} height="130" />
+                            </clipPath>
+                        </defs>
+
+                        {/* Background arc (gray) */}
+                        <path
+                            d="M250.211 129.044C254.443 129.044 257.898 125.611 257.647 121.386C256.795 107.058 253.557 92.9546 248.051 79.6612C241.566 64.0048 232.061 49.7791 220.078 37.7962C208.095 25.8133 193.869 16.308 178.213 9.82291C162.556 3.33783 145.776 -7.40748e-07 128.83 0C111.883 7.40748e-07 95.103 3.33783 79.4466 9.82292C63.7902 16.308 49.5645 25.8133 37.5816 37.7962C25.5987 49.7791 16.0934 64.0048 9.60831 79.6612C4.10199 92.9546 0.864617 107.058 0.0128375 121.386C-0.238311 125.611 3.2161 129.044 7.44809 129.044C11.6801 129.044 15.0839 125.61 15.3688 121.387C16.1998 109.074 19.0311 96.9597 23.7671 85.526C29.482 71.729 37.8585 59.1927 48.4183 48.6329C58.9781 38.0731 71.5143 29.6966 85.3113 23.9817C99.1084 18.2668 113.896 15.3254 128.83 15.3254C143.763 15.3254 158.551 18.2668 172.348 23.9817C186.145 29.6966 198.681 38.0731 209.241 48.6329C219.801 59.1927 228.177 71.7289 233.892 85.526C238.628 96.9596 241.46 109.074 242.291 121.387C242.576 125.61 245.979 129.044 250.211 129.044Z"
+                            fill="#F5F8FB"
+                        />
+
+                        {/* Progress arc (green) - clipped based on score */}
+                        <path
+                            d="M250.211 129.044C254.443 129.044 257.898 125.611 257.647 121.386C256.795 107.058 253.557 92.9546 248.051 79.6612C241.566 64.0048 232.061 49.7791 220.078 37.7962C208.095 25.8133 193.869 16.308 178.213 9.82291C162.556 3.33783 145.776 -7.40748e-07 128.83 0C111.883 7.40748e-07 95.103 3.33783 79.4466 9.82292C63.7902 16.308 49.5645 25.8133 37.5816 37.7962C25.5987 49.7791 16.0934 64.0048 9.60831 79.6612C4.10199 92.9546 0.864617 107.058 0.0128375 121.386C-0.238311 125.611 3.2161 129.044 7.44809 129.044C11.6801 129.044 15.0839 125.61 15.3688 121.387C16.1998 109.074 19.0311 96.9597 23.7671 85.526C29.482 71.729 37.8585 59.1927 48.4183 48.6329C58.9781 38.0731 71.5143 29.6966 85.3113 23.9817C99.1084 18.2668 113.896 15.3254 128.83 15.3254C143.763 15.3254 158.551 18.2668 172.348 23.9817C186.145 29.6966 198.681 38.0731 209.241 48.6329C219.801 59.1927 228.177 71.7289 233.892 85.526C238.628 96.9596 241.46 109.074 242.291 121.387C242.576 125.61 245.979 129.044 250.211 129.044Z"
+                            fill="#10B981"
+                            clipPath="url(#scoreClip)"
+                        />
+                    </svg>
+
+                    {/* Center Text */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center" style={{ top: '50px' }}>
+                        <div style={{
+
+                            fontWeight: 700,
+                            fontSize: '44px',
+                            lineHeight: '16px',
+                            letterSpacing: '0%',
+                            color: '#1E3A5F',
+                            marginBottom: "20px"
+                        }}>{score}%</div>
+                        <div style={{
+
+                            fontWeight: 400,
+                            fontSize: '14px',
+                            lineHeight: '16px',
+                            letterSpacing: '0%',
+                            textAlign: 'center',
+                            color: '#9CA3AF',
+                            marginTop: '8px'
+                        }}>Readiness Level</div>
+                    </div>
+                </div>
+
+                {/* Divider */}
+                <div className="w-full border-t mb-6" style={{ borderColor: '#E0E8ED' }} />
+
+                {/* Stats */}
+                <div className="w-full flex justify-between items-center px-4">
+                    <div className="text-center">
+                        <div className="text-3xl font-bold text-[#1E3A5F]">{overdue}</div>
+                        <div className="text-xs text-gray-400 mt-1">Overdue Stds</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-3xl font-bold text-[#1E3A5F]">{missing}</div>
+                        <div className="text-xs text-gray-400 mt-1">Missing Evidence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default AuditReadiness
