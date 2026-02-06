@@ -5,8 +5,6 @@ import ProgressStatus from '../components/ProgressStatus'
 import ComplianceScore from '../components/ComplianceScore'
 import TopPerformers from '../components/TopPerformers'
 import RecentActivities from '../components/RecentActivities'
-import MonthlyPerformance from '../components/MonthlyPerformance'
-import AuditReadiness from '../components/AuditReadiness'
 
 const Dashboard: React.FC = () => {
     const timelineData = [
@@ -39,20 +37,6 @@ const Dashboard: React.FC = () => {
         { title: 'New Criterion "5.3 Digital Identity"', description: 'Was Created By Admin', time: '1 Hour Ago' }
     ]
 
-    const monthlyData = [
-        { month: 'Jan', value: 90 },
-        { month: 'Feb', value: 75 },
-        { month: 'Mar', value: 80 },
-        { month: 'Apr', value: 42 },
-        { month: 'May', value: 88 },
-        { month: 'Jun', value: 78 },
-        { month: 'Jul', value: 55 },
-        { month: 'Aug', value: 85 },
-        { month: 'Sept', value: 77 },
-        { month: 'Oct', value: 55 },
-        { month: 'Nov', value: 88 },
-        { month: 'Dec', value: 78 }
-    ]
 
     return (
         <main className="p-6 flex-1 overflow-auto" style={{

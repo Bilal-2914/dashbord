@@ -1,5 +1,4 @@
 import React from 'react'
-import CategoryStatusGrid from './CategoryStatusGrid'
 
 interface CategoryCardProps {
     title: string
