@@ -29,40 +29,42 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({
                 </div>
             </div>
 
-            {/* Timeline Container */}
-            <div className="relative">
-                {/* Timeline Items Text Below */}
-                <div className="flex justify-between relative">
-                    {items.map((item, index) => (
-                        <div key={index} className="flex flex-col items-center text-center relative">
-                            {/* Dot positioned absolutely above text, centered in progress line */}
-                            <div
-                                className={`absolute w-3 h-3 rounded-full z-20 ${item.status === 'completed' ? 'bg-white' : 'bg-red-500'
-                                    }`}
-                                style={{
-                                    top: '-30px',
-                                    left: '50%',
-                                    transform: 'translateX(-50%)'
-                                }}
-                            />
-                            <div className="text-xs text-gray-500 mb-2 font-medium whitespace-nowrap">{item.date}</div>
-                            <div className="text-sm text-gray-700 leading-tight font-medium whitespace-nowrap">
-                                {item.title}
+            {/* Timeline Container - Scrollable */}
+            <div className="overflow-x-auto scrollbar-hide pb-2">
+                <div className="relative" style={{ minWidth: '800px' }}>
+                    {/* Progress Line Wrapper - positioned absolutely above text */}
+                    <div className="absolute" style={{ height: '14px', top: '0px', left: 0, right: 0 }}>
+                        {/* Background Line (Gray) */}
+                        <div className="absolute inset-0 bg-gray-200" style={{ borderRadius: '10px' }} />
+
+                        {/* Colored Progress Line */}
+                        <div
+                            className="absolute bg-[#1EA54E] z-10"
+                            style={{ top: 0, left: 0, height: '14px', width: '33%', borderRadius: '10px' }}
+                        />
+                    </div>
+
+                    {/* Timeline Items Text Below */}
+                    <div className="flex justify-between relative pt-8">
+                        {items.map((item, index) => (
+                            <div key={index} className="flex flex-col items-center text-center relative">
+                                {/* Dot positioned absolutely above text, centered in progress line */}
+                                <div
+                                    className={`absolute w-3 h-3 rounded-full z-20 ${item.status === 'completed' ? 'bg-white' : 'bg-red-500'
+                                        }`}
+                                    style={{
+                                        top: '-30px',
+                                        left: '50%',
+                                        transform: 'translateX(-50%)'
+                                    }}
+                                />
+                                <div className="text-xs text-gray-500 mb-2 font-medium whitespace-nowrap">{item.date}</div>
+                                <div className="text-sm text-gray-700 leading-tight font-medium whitespace-nowrap">
+                                    {item.title}
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Progress Line Wrapper - positioned absolutely above text */}
-                <div className="absolute" style={{ height: '14px', top: '-30px', left: 0, right: 0 }}>
-                    {/* Background Line (Gray) */}
-                    <div className="absolute inset-0 bg-gray-200" style={{ borderRadius: '10px' }} />
-
-                    {/* Colored Progress Line */}
-                    <div
-                        className="absolute bg-[#1EA54E] z-10"
-                        style={{ top: 0, left: 0, height: '14px', width: '33%', borderRadius: '10px' }}
-                    />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

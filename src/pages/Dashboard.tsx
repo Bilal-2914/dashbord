@@ -55,23 +55,25 @@ const Dashboard: React.FC = () => {
     ]
 
     return (
-        <main className="p-6 flex-1" style={{
-            overflowY: 'auto',
+        <main className="p-6 flex-1 overflow-auto" style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none'
         }}>
-            <div className="space-y-6">
+            <div className="space-y-6 min-w-0">
                 {/* Stats Cards Section */}
-                <div className="grid grid-cols-6 gap-4">
-                    {statsData.map((stat, index) => (
-                        <StatsCard
-                            key={index}
-                            value={stat.value}
-                            label={stat.label}
-                            icon={stat.icon}
-                            isHighlighted={stat.isHighlighted}
-                        />
-                    ))}
+                <div className="overflow-x-auto scrollbar-hide pb-2">
+                    <div className="flex gap-4 w-max lg:w-auto lg:grid lg:grid-cols-6">
+                        {statsData.map((stat, index) => (
+                            <div key={index} className="w-[200px] lg:w-auto">
+                                <StatsCard
+                                    value={stat.value}
+                                    label={stat.label}
+                                    icon={stat.icon}
+                                    isHighlighted={stat.isHighlighted}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Project Timeline Section */}
@@ -85,22 +87,29 @@ const Dashboard: React.FC = () => {
                 <ProgressStatus />
 
                 {/* Bottom Section - 3 Cards */}
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <ComplianceScore score={65} />
                     <TopPerformers performers={performersData} />
                     <RecentActivities activities={activitiesData} />
                 </div>
 
                 {/* Last Section - 2 Cards */}
-                <div className="flex gap-6">
+                {/* <div className="flex gap-6">
                     <div className="flex-1">
                         <MonthlyPerformance data={monthlyData} />
                     </div>
                     <AuditReadiness score={80} overdue={12} missing={5} />
-                </div>
+                </div> */}
             </div>
             <style>{`
                 main::-webkit-scrollbar {
+                    display: none;
+                }
+                .scrollbar-hide {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+                .scrollbar-hide::-webkit-scrollbar {
                     display: none;
                 }
             `}</style>

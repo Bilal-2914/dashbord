@@ -11,7 +11,7 @@ interface DashboardLayoutProps {
 
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, isCollapsed, onToggleSidebar }) => {
     return (
-        <div className="flex h-screen bg-gray-50 overflow-hidden">
+        <div className="flex h-screen bg-gray-50">
             <Sidebar isCollapsed={isCollapsed} />
 
             <div
@@ -23,21 +23,15 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, isCollapsed
                 <SidebarToggle isCollapsed={isCollapsed} onToggle={onToggleSidebar} />
             </div>
 
-            {!isCollapsed && (
-                <div
-                    className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
-                    onClick={onToggleSidebar}
-                />
-            )}
 
             <div
-                className="flex-1 flex flex-col transition-all duration-300 ease-in-out"
+                className="flex-1 flex flex-col transition-all duration-300 ease-in-out min-w-0"
                 style={{
                     marginLeft: isCollapsed ? '80px' : '256px'
                 }}
             >
                 <div className="sticky top-0 z-40 bg-white">
-                    <Header />
+                    <Header isCollapsed={isCollapsed} />
                 </div>
 
                 {children}
