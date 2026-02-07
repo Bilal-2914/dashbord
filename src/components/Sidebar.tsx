@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 interface SidebarProps {
     isCollapsed: boolean
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
+    const location = useLocation()
+
     return (
         <div
             className={`bg-[#1e3a5f] h-screen text-white fixed left-0 top-0 z-40 transition-all duration-300 ease-in-out ${isCollapsed ? 'w-0 md:w-[80px]' : 'w-64'
@@ -28,8 +31,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
             </div>
 
             <nav className="mt-6 space-y-2.5">
-                <div
-                    className="bg-[#2d4a6b]"
+                <Link
+                    to="/"
+                    className={`block transition-all duration-200 group ${location.pathname === '/' ? 'bg-[#2d4a6b]' : 'hover:bg-blue-500/20'}`}
                     style={{
                         width: isCollapsed ? '48px' : '208px',
                         height: '40px',
@@ -50,16 +54,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                             className={isCollapsed ? '' : 'mr-3'}
                         />
                         {!isCollapsed && (
-                            <span className="text-white font-medium">
+                            <span className={`transition-colors font-medium ${location.pathname === '/' ? 'text-white' : 'text-gray-400 group-hover:text-white'}`}>
                                 Dashboard
                             </span>
                         )}
                     </div>
-                </div>
+                </Link>
 
-                <a
-                    href="#"
-                    className="flex items-center text-sm hover:bg-blue-500/20 transition-all duration-200 group"
+                <Link
+                    to="/perspective"
+                    className={`block transition-all duration-200 group ${location.pathname === '/perspective' ? 'bg-[#2d4a6b]' : 'hover:bg-blue-500/20'}`}
                     style={{
                         width: isCollapsed ? '48px' : '208px',
                         height: '40px',
@@ -80,12 +84,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                             className={isCollapsed ? '' : 'mr-3'}
                         />
                         {!isCollapsed && (
-                            <span className="transition-colors text-gray-400 group-hover:text-white">
+                            <span className={`transition-colors font-medium ${location.pathname === '/perspective' ? 'text-white' : 'text-gray-400 group-hover:text-white'}`}>
                                 Perspectives
                             </span>
                         )}
                     </div>
-                </a>
+                </Link>
 
                 <a
                     href="#"
